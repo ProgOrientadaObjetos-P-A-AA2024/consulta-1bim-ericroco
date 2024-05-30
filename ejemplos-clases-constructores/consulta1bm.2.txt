@@ -1,0 +1,51 @@
+class Vehiculo:
+    def __init__(self, marca, modelo, año):
+        self.marca = marca
+        self.modelo = modelo
+        self.año = año
+
+    def mostrar_informacion(self):
+        print(f"Vehículo: {self.marca} {self.modelo} ({self.año})")
+
+    def arrancar(self):
+        print(f"{self.marca} {self.modelo} está arrancando...")
+
+class Coche(Vehiculo):
+    def __init__(self, marca, modelo, año, num_puertas):
+        super().__init__(marca, modelo, año)
+        self.num_puertas = num_puertas
+
+    def mostrar_informacion(self):
+        super().mostrar_informacion()
+        print(f"Número de puertas: {self.num_puertas}")
+
+    def abrir_maletero(self):
+        print(f"El maletero del {self.marca} {self.modelo} está abierto.")
+
+class Camion(Vehiculo):
+    def __init__(self, marca, modelo, año, capacidad_carga):
+        super().__init__(marca, modelo, año)
+        self.capacidad_carga = capacidad_carga
+
+    def mostrar_informacion(self):
+        super().mostrar_informacion()
+        print(f"Capacidad de carga: {self.capacidad_carga} kg")
+
+    def cargar(self, peso):
+        if peso <= self.capacidad_carga:
+            print(f"{peso} kg cargados en el {self.marca} {self.modelo}.")
+        else:
+            print(f"Exceso de carga. El {self.marca} {self.modelo} no puede cargar más de {self.capacidad_carga} kg.")
+
+# Crear instancias de vehículos
+coche1 = Coche("Toyota", "Corolla", 2020, 4)
+camion1 = Camion("Volvo", "FH16", 2018, 25000)
+
+# Mostrar información de los vehículos
+coche1.mostrar_informacion()
+camion1.mostrar_informacion()
+
+# Realizar acciones específicas de cada tipo de vehículo
+coche1.abrir_maletero()
+camion1.cargar(20000)
+camion1.cargar(30000)  # Este intento fallará por exceso de carga

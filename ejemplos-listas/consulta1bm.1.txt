@@ -1,0 +1,31 @@
+ventas = [
+    [1500, 2000, 1700],  # Ventas de la tienda 1 durante la semana
+    [2200, 2300, 2500],  # Ventas de la tienda 2 durante la semana
+    [1800, 1900, 2100],  # Ventas de la tienda 3 durante la semana
+    [1600, 1700, 1800]   # Ventas de la tienda 4 durante la semana
+]
+
+# Calcular la venta total de cada tienda
+ventas_totales = [sum(tienda) for tienda in ventas]
+print("Ventas totales de cada tienda:", ventas_totales)
+
+# Calcular la venta promedio de cada tienda
+ventas_promedio = [sum(tienda) / len(tienda) for tienda in ventas]
+print("Ventas promedio de cada tienda:", ventas_promedio)
+
+# Encontrar la tienda con la mayor venta total
+indice_max_ventas = ventas_totales.index(max(ventas_totales))
+print(f"Tienda con la mayor venta total: Tienda {indice_max_ventas + 1} con {max(ventas_totales)} en ventas totales")
+
+# Encontrar el día con la menor venta de cada tienda
+ventas_minimas = [min(tienda) for tienda in ventas]
+print("Ventas mínimas de cada tienda:", ventas_minimas)
+
+# Calcular la venta total de todas las tiendas
+venta_total_todas_tiendas = sum(ventas_totales)
+print("Venta total de todas las tiendas:", venta_total_todas_tiendas)
+
+# Calcular la venta promedio diaria de todas las tiendas
+dias_totales = sum(len(tienda) for tienda in ventas)
+venta_promedio_diaria = venta_total_todas_tiendas / dias_totales
+print("Venta promedio diaria de todas las tiendas:", venta_promedio_diaria)

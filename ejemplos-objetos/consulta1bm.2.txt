@@ -1,0 +1,83 @@
+class Proyecto:
+    def __init__(self, nombre, fecha_inicio):
+        self.nombre = nombre
+        self.fecha_inicio = fecha_inicio
+        self.tareas = []
+
+    def agregar_tarea(self, tarea):
+        self.tareas.append(tarea)
+        print(f"Tarea '{tarea.descripcion}' ha sido añadida al proyecto '{self.nombre}'.")
+
+    def __str__(self):
+        return f"Proyecto: {self.nombre}, Fecha de inicio: {self.fecha_inicio}, Tareas: {len(self.tareas)}"
+
+class Tarea:
+    def __init__(self, descripcion, fecha_limite):
+        self.descripcion = descripcion
+        self.fecha_limite = fecha_limite
+        self.trabajadores = []
+
+    def asignar_trabajador(self, trabajador):
+        self.trabajadores.append(trabajador)
+        print(f"Trabajador {trabajador.nombre} ha sido asignado a la tarea '{self.descripcion}'.")
+
+    def __str__(self):
+        return f"Tarea: {self.descripcion}, Fecha límite: {self.fecha_limite}, Trabajadores: {len(self.trabajadores)}"
+
+class Trabajador:
+    def __init__(self, nombre, puesto):
+        self.nombre = nombre
+        self.puesto = puesto
+
+class SistemaGestionProyectos:
+    def __init__(self):
+        self.proyectos = []
+
+    def crear_proyecto(self, nombre, fecha_inicio):
+        proyecto = Proyecto(nombre, fecha_inicio)
+        self.proyectos.append(proyecto)
+        print(f"Proyecto '{nombre}' ha sido creado con fecha de inicio {fecha_inicio}.")
+
+    def mostrar_proyectos(self):
+        for proyecto in self.proyectos:
+            print(proyecto)
+
+    def mostrar_detalle_proyectos(self):
+        for proyecto in self.proyectos:
+            print(proyecto)
+            for tarea in proyecto.tareas:
+                print(f"  {tarea}")
+
+# Crear sistema de gestión de proyectos
+sistema_gestion = SistemaGestionProyectos()
+
+# Crear proyectos
+sistema_gestion.crear_proyecto("Proyecto A", "2023-06-01")
+sistema_gestion.crear_proyecto("Proyecto B", "2023-07-01")
+
+# Crear tareas
+tarea1 = Tarea("Diseño de interfaz", "2023-06-15")
+tarea2 = Tarea("Desarrollo backend", "2023-06-30")
+tarea3 = Tarea("Pruebas de integración", "2023-07-15")
+
+# Crear trabajadores
+trabajador1 = Trabajador("Alice", "Diseñadora")
+trabajador2 = Trabajador("Bob", "Desarrollador")
+trabajador3 = Trabajador("Charlie", "Tester")
+
+# Asignar tareas a proyectos
+proyecto1 = sistema_gestion.proyectos[0]
+proyecto1.agregar_tarea(tarea1)
+proyecto1.agregar_tarea(tarea2)
+
+proyecto2 = sistema_gestion.proyectos[1]
+proyecto2.agregar_tarea(tarea3)
+
+# Asignar trabajadores a tareas
+tarea1.asignar_trabajador(trabajador1)
+tarea2.asignar_trabajador(trabajador2)
+tarea3.asignar_trabajador(trabajador3)
+
+# Mostrar proyectos
+sistema_gestion.mostrar_proyectos()
+sistema_gestion.mostrar_detalle_proyectos()

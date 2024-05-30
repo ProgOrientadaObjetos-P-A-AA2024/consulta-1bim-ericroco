@@ -1,0 +1,11 @@
+# Registro de coordenadas: (Ciudad, (Latitud, Longitud))
+coordenadas = [
+    ("Nueva York", (40.7128, -74.0060)),
+    ("Los Ángeles", (34.0522, -118.2437)),
+    ("Chicago", (41.8781, -87.6298)),
+    ("Houston", (29.7604, -95.3698)),
+]
+
+# Mostrar coordenadas de cada ciudad
+for ciudad, (latitud, longitud) in coordenadas:
+    print(f"Ciudad: {ciudad}, Latitud: {latitud}, Longitud: {longitud}")

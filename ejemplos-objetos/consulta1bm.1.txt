@@ -1,0 +1,57 @@
+class Vuelo:
+    def __init__(self, numero, destino, capacidad):
+        self.numero = numero
+        self.destino = destino
+        self.capacidad = capacidad
+        self.pasajeros = []
+
+    def agregar_pasajero(self, pasajero):
+        if len(self.pasajeros) < self.capacidad:
+            self.pasajeros.append(pasajero)
+            print(f"Pasajero {pasajero.nombre} ha sido añadido al vuelo {self.numero} con destino {self.destino}.")
+        else:
+            print(f"No se puede añadir más pasajeros al vuelo {self.numero}. Capacidad completa.")
+
+    def __str__(self):
+        return f"Vuelo {self.numero} a {self.destino} con {len(self.pasajeros)}/{self.capacidad} pasajeros."
+
+class Pasajero:
+    def __init__(self, nombre, pasaporte):
+        self.nombre = nombre
+        self.pasaporte = pasaporte
+
+class SistemaReservas:
+    def __init__(self):
+        self.vuelos = []
+
+    def crear_vuelo(self, numero, destino, capacidad):
+        vuelo = Vuelo(numero, destino, capacidad)
+        self.vuelos.append(vuelo)
+        print(f"Vuelo {numero} a {destino} ha sido creado con capacidad para {capacidad} pasajeros.")
+
+    def mostrar_vuelos(self):
+        for vuelo in self.vuelos:
+            print(vuelo)
+
+# Crear sistema de reservas
+sistema_reservas = SistemaReservas()
+
+# Crear vuelos
+sistema_reservas.crear_vuelo("AA123", "New York", 3)
+sistema_reservas.crear_vuelo("BA456", "London", 2)
+
+# Crear pasajeros
+pasajero1 = Pasajero("Juan Perez", "A12345678")
+pasajero2 = Pasajero("Ana Gomez", "B87654321")
+pasajero3 = Pasajero("Carlos Ruiz", "C11223344")
+pasajero4 = Pasajero("Laura Martinez", "D44332211")
+
+# Añadir pasajeros a vuelos
+vuelo1 = sistema_reservas.vuelos[0]
+vuelo1.agregar_pasajero(pasajero1)
+vuelo1.agregar_pasajero(pasajero2)
+vuelo1.agregar_pasajero(pasajero3)
+vuelo1.agregar_pasajero(pasajero4)  # Este intento fallará porque el vuelo está lleno
+
+# Mostrar información de vuelos
+sistema_reservas.mostrar_vuelos()

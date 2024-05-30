@@ -1,0 +1,21 @@
+# Registro de productos: (Nombre, Precio, Cantidad)
+productos = [
+    ("Laptop", 1200.00, 10),
+    ("Smartphone", 800.00, 50),
+    ("Tablet", 300.00, 30),
+    ("Auriculares", 100.00, 100),
+]
+
+# Calcular el valor total del inventario
+valor_total = sum(precio * cantidad for _, precio, cantidad in productos)
+print(f"Valor total del inventario: ${valor_total}")
+
+# Encontrar el producto más caro
+producto_mas_caro = max(productos, key=lambda x: x[1])
+print(f"Producto más caro: {producto_mas_caro[0]} con un precio de ${producto_mas_caro[1]}")
+
+# Mostrar productos con cantidad menor a 20
+productos_bajo_stock = [producto for producto in productos if producto[2] < 20]
+print("Productos con cantidad menor a 20:")
+for producto in productos_bajo_stock:
+    print(f"{producto[0]}: {producto[2]} unidades")

@@ -1,0 +1,38 @@
+# Inventario de productos en el almacén
+inventario = [
+    {"nombre": "Producto A", "cantidad": 100, "precio": 10.50},
+    {"nombre": "Producto B", "cantidad": 50, "precio": 20.75},
+    {"nombre": "Producto C", "cantidad": 200, "precio": 5.30},
+    {"nombre": "Producto D", "cantidad": 150, "precio": 15.40}
+]
+
+# Añadir un nuevo producto al inventario
+nuevo_producto = {"nombre": "Producto E", "cantidad": 75, "precio": 8.90}
+inventario.append(nuevo_producto)
+
+# Actualizar la cantidad de un producto existente
+producto_a_actualizar = "Producto B"
+cantidad_nueva = 70
+for producto in inventario:
+    if producto["nombre"] == producto_a_actualizar:
+        producto["cantidad"] = cantidad_nueva
+        break
+
+# Eliminar un producto del inventario
+producto_a_eliminar = "Producto C"
+inventario = [producto for producto in inventario if producto["nombre"] != producto_a_eliminar]
+
+# Calcular el valor total del inventario
+valor_total_inventario = sum(producto["cantidad"] * producto["precio"] for producto in inventario)
+print("Valor total del inventario:", valor_total_inventario)
+
+# Encontrar el producto más caro y el más barato
+producto_mas_caro = max(inventario, key=lambda x: x["precio"])
+producto_mas_barato = min(inventario, key=lambda x: x["precio"])
+print(f"Producto más caro: {producto_mas_caro['nombre']} con precio {producto_mas_caro['precio']}")
+print(f"Producto más barato: {producto_mas_barato['nombre']} con precio {producto_mas_barato['precio']}")
+
+# Generar un reporte de inventario
+print("\nReporte de Inventario:")
+for producto in inventario:
+    print(f"{producto['nombre']}: Cantidad: {producto['cantidad']}, Precio: {producto['precio']}, Valor total: {producto['cantidad'] * producto['precio']}")
